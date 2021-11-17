@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok"
+}
+
+group 'ddd.lab'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    implementation project(":template-domain")
+    implementation 'org.springframework.data:spring-data-commons'
+    implementation "com.google.guava:guava:${guavaVersion}"
+    implementation 'org.springframework:spring-context'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}

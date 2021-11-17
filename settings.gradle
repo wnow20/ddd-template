@@ -1,0 +1,13 @@
+rootProject.name = 'template'
+include 'template-starter'
+include 'template-application'
+include 'template-domain'
+include 'template-rpc'
+include 'template-client'
+
+
+buildscript {
+    ext {
+        grpcVersion= '1.42.1'
+    }
+}

@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id "io.freefair.lombok"
+}
+
+group = 'ddd.lab'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:2.5.6")
+    implementation project(':template-client')
+    implementation project(':template-rpc')
+    implementation project(':template-domain')
+    implementation project(':template-application')
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'ch.qos.logback:logback-classic:1.2.7'
+    implementation 'ch.qos.logback:logback-core:1.2.7'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testCompileOnly "io.grpc:grpc-protobuf:${grpcVersion}"
+    testCompileOnly "io.grpc:grpc-stub:${grpcVersion}"
+    testCompileOnly "io.grpc:grpc-testing:${grpcVersion}"
+    testCompileOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
